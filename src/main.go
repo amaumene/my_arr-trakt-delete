@@ -146,7 +146,7 @@ func processSonarrEpisodes(s *sonarr.Sonarr, item *trakt.History) {
 			if episode.SeasonNumber == item.Episode.Season && episode.EpisodeNumber == item.Episode.Number {
 				if episode.HasFile {
 					fmt.Printf("Sonarr Episode: %s - %s has file\n", item.Show.Title, episode.Title)
-					err = s.DeleteEpisodeFile(episode.ID)
+					err = s.DeleteEpisodeFile(episode.EpisodeFileID)
 					if err != nil {
 						log.Fatalf("Error deleting file: %v", err)
 					}
